@@ -1,17 +1,16 @@
 <div class="container">
-  <h5><%= @art.title %><br/></h5><br/>
+  <h1><%= @art.title %><br/></h1><br/>
   <div class="row">
     <div class="col-6">
       <%= image_tag(@art.image.medium.url, alt: 'Image') if @art.image? %>
     </div><br/>
     <div class="col-6">
-      <%= @art.about %>
+      <%= @art.about %><br/><br/>
+      <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Delete', art_path(@art), method: :delete, data: { confirm: 'Are you sure? '}, class: 'btn btn-danger btn-sm' %>
+      <%= link_to 'Back', :back, class: 'btn btn-dark btn-sm' %>
     </div>
-  </div>
-    <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary btn-sm' %>
-    <%= link_to 'Delete', art_path(@art), method: :delete, data: { confirm: 'Are you sure? '}, class: 'btn btn-danger btn-sm' %>
-    <%= link_to 'Back', :back, class: 'btn btn-dark btn-sm' %>
-<br/><br/>
+  </div><br/>
   <h5>Comment/s: </h5>
   <%= render @art.comments %><br/>
   <%= render 'comments/form' %>

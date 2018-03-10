@@ -4,8 +4,8 @@
       <td>
         <li>
           <%= comment.body %>
-          <%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %>
-          <%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %>
+          <small><%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %></small>
+          <small><%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %></small>
         </li>
       </td>
     </table>

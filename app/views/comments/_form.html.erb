@@ -1,6 +1,7 @@
 <div class="container">
   <%= simple_form_for ([@art, @art.comments.build]) do |a| %>
-    <%= a.input :body, label: "Add Comment: " %>
+    <%= a.input :body, label: "Comment: " %>
     <%= a.button :submit, class: 'btn btn-warning' %> 
+    <%= link_to 'Back', :back, class: 'btn btn-dark' %>
   <% end %>
-</div>
+</div><br/><br/><br/>

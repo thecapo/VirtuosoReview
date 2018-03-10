@@ -1,10 +1,11 @@
-
 <div class="container">
   <h5>Review Art from different Artists</h5>
     <% @arts.each do |art| %>
+      <%= image_tag(art.image.thumb.url) if art.image? %>
       <%= art.title %>
       <%= link_to 'Edit', edit_art_path(art) %>
       <%= link_to 'Show', art_path(art) %>
       <%= link_to 'Delete', art_path(art), method: :delete, data: { confirm: 'Are you sure? '} %>
-    <% end %>
+    <% end %><br/>
+    <%= link_to 'Create New', new_art_path %>
 </div>

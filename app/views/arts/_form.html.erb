@@ -1,8 +1,27 @@
 <div class="container">
-  <%= simple_form_for @art do |a| %>
-    <%= a.input :title %>
-    <%= a.input  :about %>
-    <%= a.button :submit %> 
+  <%= simple_form_for @art, html: { multipart: true } do |f| %>
+    <p>
+      <label>Upload Image</label><br/>
+      <%= image_tag(@art.image_url.to_s) if @art.image? %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </p>
+    <p>
+      <label>
+      <% if @art.image? %>
+        <%= image_tag @art.image.thumb.url.to_s %>
+        <div>
+          <%= label_tag :remove_image do %>
+            Remove image
+            <%= f.check_box :remove_image %>
+          <% end %>
+        </div>
+      <% end %>
+      </label>
+    </p>
+    <%= f.input :title %>
+    <%= f.input  :about %>
+    <%= f.button :submit %> 
   <% end %>
 </div>
 

@@ -8,8 +8,8 @@ class ArtsController < ApplicationController
   end 
 
   def create
-    @art = Art.new
-    if @art.save(art_params)
+    @art = Art.new(art_params)
+    if @art.save
       redirect_to art_path(@art)
     else
       render 'new'
@@ -43,7 +43,7 @@ class ArtsController < ApplicationController
   private
   
     def art_params
-      params.require(:art).permit(:title, :about)
+      params.require(:art).permit(:title, :about, :image, :remove_image, :image_cache)
     end
 
 end

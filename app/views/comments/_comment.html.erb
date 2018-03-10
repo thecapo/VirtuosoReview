@@ -1,6 +1,13 @@
 <div class="container">
-  
-  <%= comment.body %>
-  <%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %>
-  <%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %>
+  <div class="container">
+    <table class="table">
+      <td>
+        <li>
+          <%= comment.body %>
+          <%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %>
+          <%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %>
+        </li>
+      </td>
+    </table>
+  </div>
 </div>

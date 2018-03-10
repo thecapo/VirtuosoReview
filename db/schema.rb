@@ -20,12 +20,6 @@ ActiveRecord::Schema.define(version: 20180310042821) do
     t.string "image"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false

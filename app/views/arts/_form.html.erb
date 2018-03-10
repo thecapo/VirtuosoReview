@@ -1,4 +1,4 @@
-<div class="container">
+
   <%= simple_form_for @art, html: { multipart: true } do |f| %>
     <p>
       <label>Upload Image</label><br/>
@@ -9,7 +9,6 @@
     <p>
       <label>
       <% if @art.image? %>
-        <%= image_tag @art.image.thumb.url.to_s %>
         <div>
           <%= label_tag :remove_image do %>
             Remove image
@@ -21,8 +20,9 @@
     </p>
     <%= f.input :title %>
     <%= f.input  :about %>
-    <%= f.button :submit %> 
+    <%= f.button :submit, class: "btn btn-primary" %> 
+    <%= link_to 'Back', :back, class: 'btn btn-dark' %>
   <% end %>
-</div>
+
 
 

@@ -6,6 +6,7 @@
 * Devise
 * Bootstrap-Sass
 * Simple Form
+* CanCanCan
 * Searchkick
 
 * Artist can post their work and people who love art can comment.

@@ -1,4 +1,6 @@
 class ArtsController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @arts = Art.all
   end
@@ -8,7 +10,7 @@ class ArtsController < ApplicationController
   end 
 
   def create
-    @art = Art.new(art_params)
+    @art = current_user.arts.new(art_params)
     if @art.save
       redirect_to art_path(@art)
     else

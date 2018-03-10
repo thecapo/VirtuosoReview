@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309090409) do
+ActiveRecord::Schema.define(version: 20180310042821) do
 
   create_table "arts", force: :cascade do |t|
     t.string "title"
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180309090409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "art_id"
+    t.index ["art_id"], name: "index_comments_on_art_id"
   end
 
 end

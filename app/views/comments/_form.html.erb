@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for ([@art, @art.comments.build]) do |a| %>
+    <%= a.input :body %>
+    <%= a.button :submit %> 
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for([@art, @comment]) do |a| %>
+    <%= a.input :body %>
+    <%= a.button :submit %> 
+  <% end %>
+  <%= link_to 'Back', :back %>
+</div>

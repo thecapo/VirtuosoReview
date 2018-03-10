@@ -1,5 +1,7 @@
 <div class="container">
-  <%= @art.title %><br/>
-  <%= @art.about %>
-
+  <%= @art.title %>
+  <%= @art.about %><br/><br/>
+  <%= render @art.comments %><br/>
+  <%= render 'comments/form' %>
+  <% link_to 'Back', :back %>
 </div>

@@ -6,9 +6,14 @@
     </div><br/>
     <div class="col-6">
       <%= @art.about %><br/><br/>
-      <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary btn-sm' %>
-      <%= link_to 'Delete', art_path(@art), method: :delete, data: { confirm: 'Are you sure? '}, class: 'btn btn-danger btn-sm' %>
-      <%= link_to 'Back', :back, class: 'btn btn-dark btn-sm' %>
+      <% if can? :update, @art %>
+        <%= link_to 'Edit', edit_art_path(art), class: 'btn btn-primary btn-sm' %>
+      <% end %>
+      <% if can? :destroy, @art %>
+        <%= link_to 'Delete', art_path(@art), method: :delete, data: { confirm: 'Are you sure? '}, class: 'btn btn-danger btn-sm' %><br/><br/><br/>
+      <% end %>
+        <%= link_to 'Show', art_path(@art), class: 'btn btn-info btn-sm' %>
+        <%= link_to 'Back', :back, class: 'btn btn-dark btn-sm' %>
     </div>
   </div><br/>
   <h5>Comment/s: </h5>

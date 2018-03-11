@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
 before_action :authenticate_user!
+load_and_authorize_resource
 
   def create
     @art = Art.find(params[:art_id])
     @comment = @art.comments.create(comment_params)
+    @comment.user = current_user
     if @comment.save
       redirect_to art_path(@art)
     else 

@@ -30,4 +30,3 @@
 * Edit Profile
 
 voting / ratings
-avatar

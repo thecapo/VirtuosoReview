@@ -39,6 +39,6 @@ load_and_authorize_resource
   private
 
     def comment_params
-      params.require(:comment).permit(:body, :art_id)
+      params.require(:comment).permit(:body, :art_id, :avatar, :remove_avatar, :avatar_cache)
     end
 end

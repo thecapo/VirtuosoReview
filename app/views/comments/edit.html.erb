@@ -1,7 +1,16 @@
 <div class="container">
+  <div class="edit-rating" data-score=<%= @comment.comment_rating %>></div>
   <%= simple_form_for([@art, @comment]) do |a| %>
     <%= a.input :body, label: "Comment" %>
     <%= a.button :submit, class: "btn btn-warning" %> 
     <%= link_to 'Back', :back, class: 'btn btn-dark' %>
   <% end %>
 </div>
+
+<script>
+  $('.edit-rating').raty({
+    path: '/assets/',
+    readOnly: true
+  })
+</script>
+

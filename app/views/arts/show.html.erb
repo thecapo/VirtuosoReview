@@ -3,9 +3,11 @@
   <div class="row">
     <div class="col-6">
       <%= image_tag(@art.image.medium.url, alt: 'Image') if @art.image? %>
+      <div class="art-rating" data-score=<%= @art.rating %>></div>
     </div><br/>
     <div class="col-6">
-      <%= @art.about %><br/><br/>
+      <%= @art.about %><br/>
+      <small>created at: <%= @art.created_at %></small><br/><br/>
       <% if can? :update, @art %>
         <%= link_to 'Edit', edit_art_path(@art), class: 'btn btn-primary btn-sm' %>
       <% end %>
@@ -16,8 +18,18 @@
     </div>
   </div><br/>
   <h5>Comment/s: </h5>
+  <% if @art.comments.present? %>
+  <% else %>
+    <p>No Comments Yet</p>
+  <% end %>
   <%= render @art.comments %><br/>
     <% if user_signed_in? %>
       <%= render 'comments/form' %>
     <% end %>
 </div>
+
+<script>
+  $('.art-rating').raty({
+    path: '/assets/'
+  })
+</script>

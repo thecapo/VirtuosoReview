@@ -2,22 +2,29 @@
   <div class="container">
     <table class="table">
       <td>
-        <li>
-          <% if comment.user.avatar.url.present? %>
-            <%= image_tag(comment.user.avatar.thumb.url) %>
+        <% if comment.user.avatar.url.present? %>
+          <%= image_tag(comment.user.avatar.thumb.url) %>
+        <% end %>
+          <div class="comment-rating" data-score=<%= comment.comment_rating %>></div>
+          <%= comment.body %><br/>
+          <small>Posted by: </small><%= comment.user.name %>
+        <ul>
+          <small><%= time_ago_in_words(comment.created_at) %></small>         
+          <% if can? :update, comment %>
+            <small><%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %></small>
           <% end %>
-            <%= comment.body %><br/>
-          <ul>
-            <small><%= time_ago_in_words(comment.created_at) %></small>         
-            <% if can? :update, comment %>
-              <small><%= link_to 'Edit', edit_art_comment_path(comment.art, comment) %></small>
-            <% end %>
-            <% if can? :destroy, comment %>
-              <small><%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %></small>
-            <% end %>
-          </ul>
-        </li>
+          <% if can? :destroy, comment %>
+            <small><%= link_to 'Delete', art_comment_path(comment.art, comment), method: :delete, data: { confirm: "Are you sure? " } %></small>
+          <% end %>
+        </ul>
       </td>
     </table>
   </div>
 </div>
+
+<script>
+  $('.comment-rating').raty({
+    path: '/assets/',
+    readOnly: true
+  })
+</script>

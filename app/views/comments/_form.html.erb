@@ -1,9 +1,17 @@
 <div class="container">
   <%= simple_form_for ([@art, @art.comments.build]) do |a| %>
-    <%= a.input :comment_rating, as: :select, collection: 1..5 %>
+    <div id="rating-form">
+      <label> Rating </label>
+    </div>
     <%= a.input :body, label: "Comment: " %>
     <%= a.button :submit, class: 'btn btn-warning' %> 
     <%= link_to 'Back', :back, class: 'btn btn-dark' %>
   <% end %>
 </div><br/><br/><br/>
 
+<script>
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'comment[comment_rating]'
+  });
+</script>

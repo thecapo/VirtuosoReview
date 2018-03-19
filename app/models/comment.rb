@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
-  validates_presence_of :comment_rating, :body
+  validates_presence_of :body
   belongs_to :user
   belongs_to :art
+
 end

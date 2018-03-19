@@ -21,6 +21,11 @@ load_and_authorize_resource
 
   def show
     @art = Art.find(params[:id])
+    if @art.comments.blank?
+      @average_comment = 0
+    else
+      @average_comment = @art.comments.average(:comment_rating).round(2)
+    end
   end
 
   def edit

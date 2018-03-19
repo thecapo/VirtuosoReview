@@ -2,9 +2,12 @@
   <h1>Review Art from different Artists</h1>
   <% if @arts.present? %>
     <% @arts.each do |art| %>
-      <%= image_tag(art.image.medium.url) if art.image? %>
+      <%= image_tag(art.image.medium.url) if art.image? %><br/>
+      <em> Average Rating: </em>
+      <div class="index-review-rating" data-score=<%= art.comments.average(:comment_rating).round(2) %>></div>
       <h4><%= art.title %></h4><br/>
       <%= art.about %><br/>
+      <small>Artist: <%= art.user.name %></small><br/>
       <small>created at: <%= art.created_at %></small><br/>
       <% if can? :update, art %>
         <%= link_to 'Edit', edit_art_path(art), class: 'btn btn-primary btn-sm' %>
@@ -22,3 +25,13 @@
       <%= link_to 'Create New', new_art_path, class: 'btn btn-dark' %>   
     <% end %> 
 </div>
+
+<script>
+  $('.index-review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

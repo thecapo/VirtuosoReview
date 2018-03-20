@@ -5,7 +5,7 @@
       <%= image_tag(@art.image.medium.url, alt: 'Image') if @art.image? %>
       <h4 class="avg-rating"> Average Rating </h4>
       <div class="average-review-rating" data-score= "<%= @average_comment %>"></div>
-      <span>From <%= @art.comments.count %> reviews </span>
+      <span><small>From: </small><%= @art.comments.count %> reviews </span>
     </div><br/>
     <div class="col-6">
       <%= @art.about %><br/>

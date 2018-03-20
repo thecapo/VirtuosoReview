@@ -9,7 +9,9 @@
 * CanCanCan
 * Searchkick
 
+### Features
 * Artist can post their work and people who love art can comment.
+* Voting / ratings users can rate each art and the average will be posted - using raty
 
 ### Art Model
 * Title
@@ -29,4 +31,4 @@
 * Sign Up
 * Edit Profile
 
-voting / ratings
+

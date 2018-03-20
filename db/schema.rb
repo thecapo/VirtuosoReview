@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20180318101530) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "user_id"
-    t.decimal "rating"
     t.index ["user_id"], name: "index_arts_on_user_id"
   end
 

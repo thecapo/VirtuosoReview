@@ -2,6 +2,18 @@ class ArtsController < ApplicationController
 before_action :authenticate_user!, except: [:index, :show]
 load_and_authorize_resource
 
+  def search
+    Art.reindex
+    if params[:search].present?
+      @arts = Art.search(params[:search], fields: [:title], match: :word_start)
+      @arts.each do |art|
+        art.title
+      end
+    else
+      @arts = Art.all
+    end
+  end
+
   def index
     @arts = Art.all
   end

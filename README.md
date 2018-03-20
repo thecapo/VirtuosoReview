@@ -30,5 +30,6 @@
 * Log In / Log Out
 * Sign Up
 * Edit Profile
+* Search
 
 
